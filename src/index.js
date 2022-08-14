@@ -37,7 +37,7 @@ app.route('/user').get((req,res)=>{
 app.post('/register',(req,res)=>{
 	const response=req.body
 	const username=response.username;
-    const email=response.email
+    const email=response.email.toLowerCase();
 	const password=response.password;
 	const repeatpass=response.repeatPass;
 
