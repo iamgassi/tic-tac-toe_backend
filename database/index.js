@@ -4,7 +4,7 @@ module.exports.init=function()
 mongoose.connect('mongodb://localhost:27017/react_redux')
 .then(function()            
 {
-  console.log("mongo is connected")
+  console.log("mongo is connected ")
 })
 .catch(function(err)
 {
