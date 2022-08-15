@@ -4,7 +4,8 @@ const userModel =require('../database/models/user')
 const bcrypt=require('bcrypt')
 const corsModule=require('cors')
 const db=require('../database/index')
-db.init()
+require('./socket.io/socket')
+db.init()  //for DB connection
 
 app.use(corsModule())
 app.use(express.json())
@@ -30,11 +31,7 @@ app.route('/user').get((req,res)=>{
         console.log(err)
     })
 
-})
-
-//for register user
-
-app.post('/register',(req,res)=>{
+}).post((req,res)=>{
 	const response=req.body
 	const username=response.username;
     const email=response.email.toLowerCase();
@@ -97,6 +94,8 @@ app.post('/register',(req,res)=>{
 
 })
 
+
 app.listen(8000,()=>{
-    console.log("Listening on 8000")
+    console.log("Listening on",8000)
 })
+
