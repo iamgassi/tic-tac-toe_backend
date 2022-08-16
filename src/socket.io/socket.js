@@ -1,7 +1,10 @@
 const app=require('express')();
 const server=require('http').createServer(app)
-const io =require("socket.io")(server)
-const { remove } = require('../../database/models/user');
+const io =require("socket.io")(server,{
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"]
+  }})
 const router=require('./router')
 const { addUser, removeUser, getUser, getUsersInRoom } = require('./users');
 

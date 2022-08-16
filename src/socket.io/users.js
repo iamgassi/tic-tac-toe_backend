@@ -4,7 +4,7 @@ const addUser=({id,name,room})=>{
     name=name.trim().toLowerCase();
     room=room.trim().toLowerCase();
 
-    const existingUser=user.find((user)=>user.name===name && user.room===room)
+    const existingUser=users.find((user)=>user.name===name && user.room===room)
 
     if(!name || !room) return {error:"Username and Room are Required .."}
     if(existingUser) return {error: "Username is taken"}
@@ -12,7 +12,7 @@ const addUser=({id,name,room})=>{
     const user = { id, name, room };
 
     users.push(user);
-  
+    console.log(users)
     return { user };
 }
 
