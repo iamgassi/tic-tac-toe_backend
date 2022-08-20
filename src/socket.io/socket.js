@@ -11,8 +11,11 @@ const { addUser, removeUser, getUser, getUsersInRoom } = require('./users');
 app.use(router)
 
 io.on("connect",(socket)=>{
-      socket.on('join',({name,room},callback)=>{
+  
+  socket.on('join',({name,room},callback)=>{
+        // console.log("can it work",io.sockets.clients(room))
         const {error,user} =addUser({id:socket.id,name,room});
+        // console.log(io.socket)
         if(error) return callback(error)
 
         socket.join(user.room);
@@ -33,6 +36,7 @@ io.on("connect",(socket)=>{
         }
       })
 })
+
 
 server.listen(9000,()=>{
     console.log("socket is on",9000)
