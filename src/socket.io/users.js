@@ -1,15 +1,16 @@
 const users=[]
 
-const addUser=({id,name,room})=>{
+const addUser=({id,name,room,rounds})=>{
     name=name.trim().toLowerCase();
     room=room.trim().toLowerCase();
 
     const existingUser=users.find((user)=>user.name===name && user.room===room)
-
+    const RoomLimit=users.filter((user)=>{return user.room===room}).length;
     if(!name || !room) return {error:"Username and Room are Required .."}
+    if(RoomLimit>1) return {error:"Only two user are allowed in Room!"}
     if(existingUser) return {error: "Username is taken"}
 
-    const user = { id, name, room };
+    const user = { id, name, room ,rounds};
 
     users.push(user);
     console.log(users)
