@@ -33,7 +33,7 @@ io.on("connect",(socket)=>{
       socket.on('play',data=>{
               console.log("server recived:",data)
 
-              io.to(user.room)
+              // io.to(user.room)
             })
 
       socket.on('disconnect',()=>{
